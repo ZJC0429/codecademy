@@ -34,7 +34,7 @@ def convert_damage(damage_list, convert_dict):
     return damage_list
 # test function by updating damages
 damages = convert_damage(damages, conversion)
-print(damages)
+
 
 # 2 
 # Create a Table
@@ -70,6 +70,7 @@ def dict_sortbyyear(hurricanes_table, years_lst):
     return dt
 # create a new dictionary of hurricanes with year and key
 hurricanes_dict_by_years = dict_sortbyyear(hurricanes_dict, years)
+print(hurricanes_dict_by_years[1932])
 
 # 4
 # Counting Damaged Areas
@@ -127,22 +128,22 @@ def mortality_class(hurricanes_table, scale):
   dt = {0:[],1:[],2:[],3:[],4:[],5:[]}
   for key in hurricanes_table:
     if hurricanes_table[key]['Deaths'] >= scale[4]:
-      dt[5].append(key)
+      dt[5].append(hurricanes_table[key])
     elif scale[4] >= hurricanes_table[key]['Deaths'] > scale[3]:
-      dt[4].append(key)
+      dt[4].append(hurricanes_table[key])
     elif scale[3] >= hurricanes_table[key]['Deaths'] > scale[2]:
-      dt[3].append(key)
+      dt[3].append(hurricanes_table[key])
     elif scale[2] >= hurricanes_table[key]['Deaths'] > scale[1]:
-      dt[2].append(key)
+      dt[2].append(hurricanes_table[key])
     elif scale[1] >= hurricanes_table[key]['Deaths'] > scale[0]:
-      dt[1].append(key)
+      dt[1].append(hurricanes_table[key])
     else:
-      dt[0].append(key)
+      dt[0].append(hurricanes_table[key])
   return dt
 
 # categorize hurricanes in new dictionary with mortality severity as key
 hurricanes_by_mortality = mortality_class(hurricanes_dict, mortality_scale)
-print(hurricanes_by_mortality)
+print(hurricanes_by_mortality[5])
 
 # 8 Calculating Hurricane Maximum Damage
 def most_damage(hurricanes_table):
@@ -172,18 +173,18 @@ def damage_class(hurricanes_table, scale):
   dt = {0:[],1:[],2:[],3:[],4:[],5:[]}
   for key in hurricanes_table:
     if type(hurricanes_table[key]['Damage']) is float and hurricanes_table[key]['Damage'] >= scale[4]:
-      dt[5].append(key)
+      dt[5].append(hurricanes_table[key])
     elif type(hurricanes_table[key]['Damage']) is float and scale[4] >= hurricanes_table[key]['Damage'] > scale[3]:
-      dt[4].append(key)
+      dt[4].append(hurricanes_table[key])
     elif type(hurricanes_table[key]['Damage']) is float and scale[3] >= hurricanes_table[key]['Damage'] > scale[2]:
-      dt[3].append(key)
+      dt[3].append(hurricanes_table[key])
     elif type(hurricanes_table[key]['Damage']) is float and scale[2] >= hurricanes_table[key]['Damage'] > scale[1]:
-      dt[2].append(key)
+      dt[2].append(hurricanes_table[key])
     elif type(hurricanes_table[key]['Damage']) is float and scale[1] >= hurricanes_table[key]['Damage'] > scale[0]:
-      dt[1].append(key)
+      dt[1].append(hurricanes_table[key])
     else:
-      dt[0].append(key)
+      dt[0].append(hurricanes_table[key])
   return dt
 
 hurricanes_by_damage = damage_class(hurricanes_dict, damage_scale)
-print(hurricanes_by_damage)
+print(hurricanes_by_damage[5])
